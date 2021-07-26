@@ -1,0 +1,36 @@
+{
+  "name": "node-some-random-api",
+  "version": "1.0.0-dev.0",
+  "description": "Node.js wrapper for Some Random API.",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pelfox/node-some-random-api.git"
+  },
+  "author": {
+    "name": "Pelfox"
+  },
+  "license": "GPL-3.0",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.21.1",
+    "typescript": "^4.3.5"
+  },
+  "bugs": {
+    "url": "https://github.com/Pelfox/node-some-random-api/issues"
+  },
+  "homepage": "https://github.com/Pelfox/node-some-random-api#readme",
+  "files": [
+    "./bin/*",
+    "./lib/*"
+  ],
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0"
+  }
+}
