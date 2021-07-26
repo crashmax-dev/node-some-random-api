@@ -1,4 +1,5 @@
 import axios from "axios";
+import APIError from "../errors/APIError";
 
 /**
  *
@@ -19,6 +20,6 @@ export default async function (m: string, a?: any): Promise<any> {
     const response = await axios.get(encodeURI(uri));
     return response.data;
   } catch (error) {
-    console.error(error);
+    throw new APIError(error.status, error.message);
   }
 }
