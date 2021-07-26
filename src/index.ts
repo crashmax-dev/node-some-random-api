@@ -4,7 +4,8 @@ export default class SRAClient {
   /**
    * `SRAClient` — wrapper for `Some Random API`.
    */
-  public constructor() {}
+  public constructor() {
+  }
 
   /**
    * An endpoint that sends a random image and fact of a dog.
@@ -101,7 +102,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async lyrics(title: string, cancer?: boolean) {
-    return await RequestHandler("lyrics", [{ name: 'title', value: title }, { name: 'cancer', value: cancer }]);
+    return await RequestHandler("lyrics", [{name: 'title', value: title}, {name: 'cancer', value: cancer}]);
   }
 
   /**
@@ -120,7 +121,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async pokedex(pokemon: string, dym?: string, key?: string) {
-    return await RequestHandler("pokedex", [{ name: 'pokemon', value: pokemon }, { 'dym': dym }, { 'key': key }]);
+    return await RequestHandler("pokedex", [{name: 'pokemon', value: pokemon}, {'dym': dym}, {'key': key}]);
   }
 
   /**
@@ -129,7 +130,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async minecraft(username: string) {
-    return await RequestHandler("mc", [{ name: 'username', value: username }]);
+    return await RequestHandler("mc", [{name: 'username', value: username}]);
   }
 
   /**
@@ -147,7 +148,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async discordBotToken(id?: number) {
-    return await RequestHandler("bottoken", [{ name: 'id', value: id }]);
+    return await RequestHandler("bottoken", [{name: 'id', value: id}]);
   }
 
   /**
@@ -157,7 +158,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async chatBot(message: string, key: string) {
-    return await RequestHandler("chatbot", [{ name: 'message', value: message }, { name: 'key', value: key }]);
+    return await RequestHandler("chatbot", [{name: 'message', value: message}, {name: 'key', value: key}]);
   }
 
   /**
@@ -167,7 +168,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async gay(avatar: string, key?: string) {
-    return await RequestHandler("canvas/gay", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/gay", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -177,7 +178,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async glassOverlay(avatar: string, key?: string) {
-    return await RequestHandler("canvas/glass", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/glass", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -187,7 +188,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async wasted(avatar: string, key?: string) {
-    return await RequestHandler("canvas/wasted", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/wasted", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -197,7 +198,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async passed(avatar: string, key?: string) {
-    return await RequestHandler("canvas/passed", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/passed", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -207,7 +208,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async jail(avatar: string, key?: string) {
-    return await RequestHandler("canvas/jail", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/jail", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -217,7 +218,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async comrade(avatar: string, key?: string) {
-    return await RequestHandler("canvas/comrade", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/comrade", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -227,7 +228,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async triggered(avatar: string, key?: string) {
-    return await RequestHandler("canvas/triggered", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/triggered", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -237,7 +238,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async greyscale(avatar: string, key?: string) {
-    return await RequestHandler("canvas/greyscale", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/greyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -247,7 +248,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async invert(avatar: string, key?: string) {
-    return await RequestHandler("canvas/invert", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/invert", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -257,7 +258,7 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async invertgreyscale(avatar: string, key?: string) {
-    return await RequestHandler("canvas/invertgreyscale", [{ name: 'avatar', value: avatar }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
   }
 
   /**
@@ -268,7 +269,10 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async brightness(avatar: string, brightness?: number, key?: string) {
-    return await RequestHandler("canvas/invertgreyscale", [{ name: 'avatar', value: avatar }, { name: 'brightness', value: brightness }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {
+      name: 'brightness',
+      value: brightness
+    }, {name: 'key', value: key}]);
   }
 
   /**
@@ -279,6 +283,9 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async threshold(avatar: string, threshold?: number, key?: string) {
-    return await RequestHandler("canvas/threshold", [{ name: 'avatar', value: avatar }, { name: 'threshold', value: threshold }, { name: 'key', value: key }]);
+    return await RequestHandler("canvas/threshold", [{name: 'avatar', value: avatar}, {
+      name: 'threshold',
+      value: threshold
+    }, {name: 'key', value: key}]);
   }
 }

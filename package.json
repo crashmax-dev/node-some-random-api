@@ -1,6 +1,6 @@
 {
   "name": "node-some-random-api",
-  "version": "1.0.0-dev.1",
+  "version": "1.0.0-dev.2",
   "description": "Node.js wrapper for Some Random API.",
   "main": "./lib/index.js",
   "repository": {
@@ -17,7 +17,10 @@
     "typescript": "^4.3.5"
   },
   "keywords": [
-    "sra", "some-random-api", "typescript", "wrapper-library"
+    "sra",
+    "some-random-api",
+    "typescript",
+    "wrapper-library"
   ],
   "bugs": {
     "url": "https://github.com/Pelfox/node-some-random-api/issues"
