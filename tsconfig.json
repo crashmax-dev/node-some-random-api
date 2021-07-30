@@ -25,7 +25,13 @@
     "experimentalDecorators": true,
     "downlevelIteration": true,
     "declaration": true,
-    "pretty": true
+    "pretty": true,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@rest/*": ["src/rest/*"],
+      "@errors/*": ["src/errors/*"]
+    }
   },
   "include": [
     "./typings/**/*",

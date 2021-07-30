@@ -1,11 +1,12 @@
 import axios from "axios";
-import APIError from "../errors/APIError";
+import APIError from "@errors/APIError";
 
 /**
  *
  * @param m {string} endpoint
  * @param a {string} arguments
  */
+// TODO: rewrite code
 export default async function (m: string, a?: any): Promise<any> {
   try {
     let uri = `https://some-random-api.ml/${m}?a=b`;

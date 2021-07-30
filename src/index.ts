@@ -1,4 +1,4 @@
-import RequestHandler from "./rest/RequestHandler";
+import RequestHandler from "@rest/RequestHandler";
 
 export default class SRAClient {
   /**
