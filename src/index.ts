@@ -1,10 +1,22 @@
 import RequestHandler from "@rest/RequestHandler";
 
 export default class SRAClient {
+  private readonly _t: string | undefined;
+
   /**
    * `SRAClient` — wrapper for `Some Random API`.
+   * @param token {string?} Token, that you got from SRA.
    */
-  public constructor() {
+  public constructor(token?: string) {
+    this._t = token;
+  }
+
+  /**
+   * Get passed SRA token (if any was passed).
+   * @returns {string | undefined} Passed token.
+   */
+  public get token(): string | undefined {
+    return this._t;
   }
 
   /**
@@ -98,11 +110,10 @@ export default class SRAClient {
   /**
    * An endpoint which searches for lyrics.
    * @param title {string} Name of the song.
-   * @param cancer {boolean?} Do we need to use cancer?
    * @returns {object} Returned data from API.
    */
-  public async lyrics(title: string, cancer?: boolean) {
-    return await RequestHandler("lyrics", [{name: 'title', value: title}, {name: 'cancer', value: cancer}]);
+  public async lyrics(title: string) {
+    return await RequestHandler("lyrics", [{name: 'title', value: title}]);
   }
 
   /**
@@ -116,12 +127,10 @@ export default class SRAClient {
   /**
    * Search for information about pokemon'.
    * @param pokemon {string} Pokemon name.
-   * @param dym {string?} Dym.
-   * @param key {string?} Key.
    * @returns {object} Returned data from API.
    */
-  public async pokedex(pokemon: string, dym?: string, key?: string) {
-    return await RequestHandler("pokedex", [{name: 'pokemon', value: pokemon}, {'dym': dym}, {'key': key}]);
+  public async pokedex(pokemon: string) {
+    return await RequestHandler("pokedex", [{name: 'pokemon', value: pokemon}]);
   }
 
   /**
@@ -144,7 +153,7 @@ export default class SRAClient {
   /**
    * A meme api which generates a fake
    * "real looking" Discord Bot Token.
-   * @param id {number?} ID of the bot.
+   * @param id {number?} ID of the application.
    * @returns {object} Returned data from API.
    */
   public async discordBotToken(id?: number) {
@@ -153,139 +162,127 @@ export default class SRAClient {
 
   /**
    * Lonely boi now has a friend.
+   * This method requires token authorization!
    * @param message {string} Message from you.
-   * @param key {string} API Key.
    * @returns {object} Returned data from API.
    */
-  public async chatBot(message: string, key: string) {
-    return await RequestHandler("chatbot", [{name: 'message', value: message}, {name: 'key', value: key}]);
+  public async chatBot(message: string) {
+    return await RequestHandler("chatbot", [{name: 'message', value: message}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Make an image more gay.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async gay(avatar: string, key?: string) {
-    return await RequestHandler("canvas/gay", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async gay(avatar: string) {
+    return await RequestHandler("canvas/gay", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Make an image look more like a mosaic glass.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async glassOverlay(avatar: string, key?: string) {
-    return await RequestHandler("canvas/glass", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async glassOverlay(avatar: string) {
+    return await RequestHandler("canvas/glass", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Wasted API.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async wasted(avatar: string, key?: string) {
-    return await RequestHandler("canvas/wasted", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async wasted(avatar: string) {
+    return await RequestHandler("canvas/wasted", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Respect +100.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async passed(avatar: string, key?: string) {
-    return await RequestHandler("canvas/passed", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async passed(avatar: string) {
+    return await RequestHandler("canvas/passed", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Put an image to jail.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async jail(avatar: string, key?: string) {
-    return await RequestHandler("canvas/jail", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async jail(avatar: string) {
+    return await RequestHandler("canvas/jail", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Welcome back, comrade.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async comrade(avatar: string, key?: string) {
-    return await RequestHandler("canvas/comrade", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async comrade(avatar: string) {
+    return await RequestHandler("canvas/comrade", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * No meaningful description *triggered*.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async triggered(avatar: string, key?: string) {
-    return await RequestHandler("canvas/triggered", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async triggered(avatar: string) {
+    return await RequestHandler("canvas/triggered", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Applies a greyscale filter.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async greyscale(avatar: string, key?: string) {
-    return await RequestHandler("canvas/greyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async greyscale(avatar: string) {
+    return await RequestHandler("canvas/greyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Applies a invert filter.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async invert(avatar: string, key?: string) {
-    return await RequestHandler("canvas/invert", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async invert(avatar: string) {
+    return await RequestHandler("canvas/invert", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Applies a invert and greyscale filter.
    * @param avatar {string} Avatar to work with.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async invertgreyscale(avatar: string, key?: string) {
-    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: key}]);
+  public async invertgreyscale(avatar: string) {
+    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
   /**
    * Applies a brightness filter.
    * @param avatar {string} Avatar to work with.
    * @param brightness {number?} Brightness to use.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async brightness(avatar: string, brightness?: number, key?: string) {
+  public async brightness(avatar: string, brightness?: number) {
     return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {
       name: 'brightness',
       value: brightness
-    }, {name: 'key', value: key}]);
+    }, {name: 'key', value: this._t}]);
   }
 
   /**
    * Applies a threshold filter.
    * @param avatar {string} Avatar to work with.
    * @param threshold {number?} Threshold to use.
-   * @param key {string?} API Key.
    * @returns {object} Returned data from API.
    */
-  public async threshold(avatar: string, threshold?: number, key?: string) {
+  public async threshold(avatar: string, threshold?: number) {
     return await RequestHandler("canvas/threshold", [{name: 'avatar', value: avatar}, {
       name: 'threshold',
       value: threshold
-    }, {name: 'key', value: key}]);
+    }, {name: 'key', value: this._t}]);
   }
 }
