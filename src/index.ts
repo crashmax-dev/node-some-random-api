@@ -9,12 +9,6 @@ export class SRAClient {
   private readonly api_token?: string;
 
   /**
-   * Base URI to work with.
-   * @type {string}
-   */
-  private readonly base_uri: string = "https://some-random-api.ml/";
-
-  /**
    * `SRAClient` — client class of wrapper for `Some Random API`.
    * Main SRA website: https://some-random-api.ml.
    * @param token {string | undefined} Token, that you got from SRA.
@@ -35,7 +29,9 @@ export class SRAClient {
     const params = new URLSearchParams(
       this.api_token ? Object.assign(args, { key: this.api_token }) : args
     ).toString();
-    const response = await fetch(this.base_uri + method + "?" + params);
+    const response = await fetch(
+      `https://some-random-api.ml/${method}?${params}`
+    );
     const data = await response.json();
     return data;
   }
