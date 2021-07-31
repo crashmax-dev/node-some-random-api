@@ -12,7 +12,7 @@ export default async function (method: string, args?: Array<RequestArgument>): P
   try {
     // Default (or start) request URI.
     // TODO: remove "?a=b" from URI.
-    let uri: string = `https://some-random-api.ml/${method}?a=b`;
+    const uri = `https://some-random-api.ml/${method}?a=b`;
 
     // This is a generator for our arguments array.
     args?.forEach((arg: RequestArgument) => {

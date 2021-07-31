@@ -32,6 +32,7 @@
   ],
   "typings": "./lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
