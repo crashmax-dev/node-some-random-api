@@ -1,0 +1,30 @@
+name: Build & Publish library
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, '[SKIP CI]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 — Checking the repository.
+        uses: actions/checkout@v2
+        
+      - name: Step 2 — Installing the Node.
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      
+      - name: Step 3 — Install dependencies.
+        run: yarn install --production=true --user
+      
+      - name: Step 4 — Build the library.
+        run: yarn run build
+      
+      - name: Step 5 — Publish the library.
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: "public"
+          
