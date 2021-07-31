@@ -16,16 +16,16 @@ jobs:
         with:
           node-version: 16
 
-      - name: Step 3 — Run tests.
-        run: yarn run test
-
       - name: Step 4 — Install dependencies.
         run: yarn install --production=false --user
 
-      - name: Step 5 — Build the library.
+      - name: Step 5 — Run tests.
+        run: yarn run test
+
+      - name: Step 6 — Build the library.
         run: yarn run build
 
-      - name: Step 6 — Publish the library.
+      - name: Step 7 — Publish the library.
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
