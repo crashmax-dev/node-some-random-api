@@ -257,7 +257,10 @@ export default class SRAClient {
    * @returns {object} Returned data from API.
    */
   public async invertgreyscale(avatar: string) {
-    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {
+      name: 'key',
+      value: this._t
+    }]);
   }
 
   /**
