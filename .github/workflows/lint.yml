@@ -1,7 +1,7 @@
 name: Lint Code
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   lint:
@@ -9,14 +9,14 @@ jobs:
     steps:
       - name: Step 1 — Checking the repository.
         uses: actions/checkout@v2
-      
+
       - name: Step 2 — Installing the Node.
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      
+
       - name: Step 3 — Install dependencies.
         run: yarn install --production=false --user
-      
+
       - name: Step 4 — Run the lint script
         run: yarn run lint

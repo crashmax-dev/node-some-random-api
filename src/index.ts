@@ -1,10 +1,18 @@
-import RequestHandler from "@rest/RequestHandler";
+import RequestHandler from "./rest/RequestHandler";
+import {AxiosResponse} from "axios";
 
-export default class SRAClient {
+export class SRAClient {
+  /**
+   * Client's token to create requests.
+   * @type {string | undefined}
+   * @private
+   * @readonly
+   */
   private readonly _t: string | undefined;
 
   /**
-   * `SRAClient` — wrapper for `Some Random API`.
+   * `SRAClient` — client class of wrapper for `Some Random API`.
+   * Main SRA website: https://some-random-api.ml.
    * @param token {string?} Token, that you got from SRA.
    */
   public constructor(token?: string) {
@@ -23,7 +31,7 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a dog.
    * @returns {object} Returned data from API.
    */
-  public async dog() {
+  public async dog(): Promise<AxiosResponse> {
     return await RequestHandler("animal/dog");
   }
 
@@ -31,7 +39,7 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a cat.
    * @returns {object} Returned data from API.
    */
-  public async cat() {
+  public async cat(): Promise<AxiosResponse> {
     return await RequestHandler("animal/cat");
   }
 
@@ -39,7 +47,7 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a panda.
    * @returns {object} Returned data from API.
    */
-  public async panda() {
+  public async panda(): Promise<AxiosResponse> {
     return await RequestHandler("animal/panda");
   }
 
@@ -47,7 +55,7 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a red panda.
    * @returns {object} Returned data from API.
    */
-  public async red_panda() {
+  public async redPanda(): Promise<AxiosResponse> {
     return await RequestHandler("animal/red_panda");
   }
 
@@ -55,7 +63,7 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a koala.
    * @returns {object} Returned data from API.
    */
-  public async koala() {
+  public async koala(): Promise<AxiosResponse> {
     return await RequestHandler("animal/koala");
   }
 
@@ -63,7 +71,7 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a bird.
    * @returns {object} Returned data from API.
    */
-  public async bird() {
+  public async bird(): Promise<AxiosResponse> {
     return await RequestHandler("animal/bird");
   }
 
@@ -71,23 +79,47 @@ export default class SRAClient {
    * An endpoint that sends a random image and fact of a raccoon.
    * @returns {object} Returned data from API.
    */
-  public async raccoon() {
-    return await RequestHandler("animu/raccoon");
+  public async raccoon(): Promise<AxiosResponse> {
+    return await RequestHandler("animal/raccoon");
   }
 
   /**
    * An endpoint that sends a random image and fact of a kangaroo.
    * @returns {object} Returned data from API.
    */
-  public async kangaroo() {
-    return await RequestHandler("animu/kangaroo");
+  public async kangaroo(): Promise<AxiosResponse> {
+    return await RequestHandler("animal/kangaroo");
+  }
+
+  /**
+   * An endpoint that sends a random image and fact of a fox.
+   * @returns {object} Returned data from API.
+   */
+  public async fox(): Promise<AxiosResponse> {
+    return await RequestHandler("animal/fox");
+  }
+
+  /**
+   * An endpoint that sends a random image and fact of a birb.
+   * @returns {object} Returned data from API.
+   */
+  public async birb(): Promise<AxiosResponse> {
+    return await RequestHandler("animal/birb");
+  }
+
+  /**
+   * An endpoint that sends a random image and fact of a whale.
+   * @returns {object} Returned data from API.
+   */
+  public async whale(): Promise<AxiosResponse> {
+    return await RequestHandler("animal/whale");
   }
 
   /**
    * An endpoint that returns a random winking gif.
    * @returns {object} Returned data from API.
    */
-  public async wink() {
+  public async wink(): Promise<AxiosResponse> {
     return await RequestHandler("animu/wink");
   }
 
@@ -95,7 +127,7 @@ export default class SRAClient {
    * An endpoint that returns a random patting gif.
    * @returns {object} Returned data from API.
    */
-  public async pat() {
+  public async pat(): Promise<AxiosResponse> {
     return await RequestHandler("animu/pat");
   }
 
@@ -103,8 +135,16 @@ export default class SRAClient {
    * An endpoint that returns a random hugging gif.
    * @returns {object} Returned data from API.
    */
-  public async hug() {
+  public async hug(): Promise<AxiosResponse> {
     return await RequestHandler("animu/hug");
+  }
+
+  /**
+   * An endpoint that returns a random quote from anime.
+   * @returns {object} Returned data from API.
+   */
+  public async animeQuote(): Promise<AxiosResponse> {
+    return await RequestHandler("animu/quote");
   }
 
   /**
@@ -112,7 +152,7 @@ export default class SRAClient {
    * @param title {string} Name of the song.
    * @returns {object} Returned data from API.
    */
-  public async lyrics(title: string) {
+  public async lyrics(title: string): Promise<AxiosResponse> {
     return await RequestHandler("lyrics", [{name: 'title', value: title}]);
   }
 
@@ -120,7 +160,7 @@ export default class SRAClient {
    * An endpoint which returns jokes.
    * @returns {object} Returned data from API.
    */
-  public async joke() {
+  public async joke(): Promise<AxiosResponse> {
     return await RequestHandler("joke");
   }
 
@@ -129,7 +169,7 @@ export default class SRAClient {
    * @param pokemon {string} Pokemon name.
    * @returns {object} Returned data from API.
    */
-  public async pokedex(pokemon: string) {
+  public async pokedex(pokemon: string): Promise<AxiosResponse> {
     return await RequestHandler("pokedex", [{name: 'pokemon', value: pokemon}]);
   }
 
@@ -138,7 +178,7 @@ export default class SRAClient {
    * @param username {string} Username of Minecraft player.
    * @returns {object} Returned data from API.
    */
-  public async minecraft(username: string) {
+  public async minecraft(username: string): Promise<AxiosResponse> {
     return await RequestHandler("mc", [{name: 'username', value: username}]);
   }
 
@@ -146,7 +186,7 @@ export default class SRAClient {
    * Very bad meme api.
    * @returns {object} Returned data from API.
    */
-  public async meme() {
+  public async meme(): Promise<AxiosResponse> {
     return await RequestHandler("meme");
   }
 
@@ -156,7 +196,7 @@ export default class SRAClient {
    * @param id {number?} ID of the application.
    * @returns {object} Returned data from API.
    */
-  public async discordBotToken(id?: number) {
+  public async discordBotToken(id?: number): Promise<AxiosResponse> {
     return await RequestHandler("bottoken", [{name: 'id', value: id}]);
   }
 
@@ -166,7 +206,7 @@ export default class SRAClient {
    * @param message {string} Message from you.
    * @returns {object} Returned data from API.
    */
-  public async chatBot(message: string) {
+  public async chatBot(message: string): Promise<AxiosResponse> {
     return await RequestHandler("chatbot", [{name: 'message', value: message}, {name: 'key', value: this._t}]);
   }
 
@@ -175,7 +215,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async gay(avatar: string) {
+  public async gay(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/gay", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -184,7 +224,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async glassOverlay(avatar: string) {
+  public async glass(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/glass", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -193,7 +233,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async wasted(avatar: string) {
+  public async wasted(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/wasted", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -202,7 +242,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async passed(avatar: string) {
+  public async passed(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/passed", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -211,7 +251,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async jail(avatar: string) {
+  public async jail(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/jail", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -220,7 +260,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async comrade(avatar: string) {
+  public async comrade(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/comrade", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -229,7 +269,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async triggered(avatar: string) {
+  public async triggered(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/triggered", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -238,7 +278,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async greyscale(avatar: string) {
+  public async greyscale(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/greyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -247,7 +287,7 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async invert(avatar: string) {
+  public async invert(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/invert", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 
@@ -256,8 +296,11 @@ export default class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async invertgreyscale(avatar: string) {
-    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  public async invertgreyscale(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {
+      name: 'key',
+      value: this._t
+    }]);
   }
 
   /**
@@ -266,7 +309,7 @@ export default class SRAClient {
    * @param brightness {number?} Brightness to use.
    * @returns {object} Returned data from API.
    */
-  public async brightness(avatar: string, brightness?: number) {
+  public async brightness(avatar: string, brightness?: number): Promise<AxiosResponse> {
     return await RequestHandler("canvas/invertgreyscale", [{name: 'avatar', value: avatar}, {
       name: 'brightness',
       value: brightness
@@ -279,10 +322,216 @@ export default class SRAClient {
    * @param threshold {number?} Threshold to use.
    * @returns {object} Returned data from API.
    */
-  public async threshold(avatar: string, threshold?: number) {
+  public async threshold(avatar: string, threshold?: number): Promise<AxiosResponse> {
     return await RequestHandler("canvas/threshold", [{name: 'avatar', value: avatar}, {
       name: 'threshold',
       value: threshold
     }, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Search for word definition in dictionary.
+   * @param word {string} Search word.
+   * @returns {object} Returned data from API.
+   */
+  public async dictionary(word: string): Promise<AxiosResponse> {
+    return await RequestHandler("dictionary", [{name: "word", value: word}]);
+  }
+
+  /**
+   * Check for strings similarity.
+   * @param start {string} First string.
+   * @param end {string} Last string.
+   * @returns {object} Returned data from API.
+   */
+  public async stringSimilarity(start: string, end: string): Promise<AxiosResponse> {
+    return await RequestHandler("stringsimilarity", [{name: "string1", value: start}, {name: "string2", value: end}]);
+  }
+
+  /**
+   * Applies a sepia filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async sepia(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/sepia", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a red filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async red(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/red", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a green filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async green(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/green", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a blue filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async blue(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/blue", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a "blurple" filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async blurple(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/blurple", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a new Discord color filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async blurple2(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/blurple2", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a filter with color.
+   * @param avatar {string} Avatar to work with.
+   * @param color {string} HEX-color (without "#").
+   * @returns {object} Returned data from API.
+   */
+  public async color(avatar: string, color: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/color", [{name: 'avatar', value: avatar}, {name: 'color', value: color}]);
+  }
+
+  /**
+   * Applies a pixelate filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async pixelate(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/pixelate", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Applies a blur filter.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async blur(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/blur", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generates an fake YouTube comment.
+   * @param avatar {string} Avatar to work with.
+   * @param username {string} Fake comment author.
+   * @param comment {string} Content of the comment.
+   * @returns {object} Returned data from API.
+   */
+  public async youtubeComment(avatar: string, username: string, comment: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/youtube-comment", [{name: 'avatar', value: avatar}, {
+      name: 'username',
+      value: username
+    }, {name: 'comment', value: comment}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generates an fake Tweet.
+   * @param avatar {string} Avatar to work with.
+   * @param username {string} Fake comment author.
+   * @param displayName {string} Author display name.
+   * @param comment {string} Content of the comment.
+   * @returns {object} Returned data from API.
+   */
+  public async tweet(avatar: string, username: string, displayName: string, comment: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/tweet", [{name: 'avatar', value: avatar}, {
+      name: 'username',
+      value: username
+    }, {name: 'displayname', value: displayName}, {name: 'comment', value: comment}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generate image from meme "its so stupid".
+   * @param avatar {string} Avatar to work with.
+   * @param dog {string} Dog to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async itsSoStupid(avatar: string, dog: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/its-so-stupid", [{name: 'avatar', value: avatar}, {
+      name: 'dog',
+      value: dog
+    }, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generate image from meme "SIMP".
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async simpCard(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/simpcard", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generate image from meme "horny".
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async hornyCard(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/hornycard", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generate loli police meme.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async lolice(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/lolice", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * View color!
+   * @param hex {string} HEX to view (without "#").
+   * @returns {object} Returned data from API.
+   */
+  public async colorViewer(hex: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/color", [{name: 'hex', value: hex}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Convert HEX into RGB.
+   * @param rgb {string} RGB to convert.
+   * @returns {object} Returned data from API.
+   */
+  public async hex(rgb: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/hex", [{name: 'rgb', value: rgb}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Convert RGB into HEX.
+   * @param hex {string} HEX to convert.
+   * @returns {object} Returned data from API.
+   */
+  public async rgb(hex: string): Promise<AxiosResponse> {
+    return await RequestHandler("canvas/rgb", [{name: 'hex', value: hex}, {name: 'key', value: this._t}]);
+  }
+
+  /**
+   * Generate image from "petpet" meme.
+   * @param avatar {string} Avatar to work with.
+   * @returns {object} Returned data from API.
+   */
+  public async petpet(avatar: string): Promise<AxiosResponse> {
+    return await RequestHandler("premium/petpet", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 }
