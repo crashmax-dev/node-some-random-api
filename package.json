@@ -1,7 +1,7 @@
 {
   "name": "node-some-random-api",
   "version": "1.0.0-dev",
-  "description": "Node.js wrapper for Some Random API.",
+  "description": "Promise-based Node.js wrapper for Some Random API.",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
