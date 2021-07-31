@@ -1,48 +1,19 @@
-import axios from "axios";
-import APIError from "../errors/APIError";
+import fetch, {Response} from "node-fetch";
 
 /**
  * Method for creating the request to the API.
  * @param method {string} Endpoint, that we requesting.
- * @param args {Array<RequestArgument>} Additional arguments.
- * @returns {Promise<any>} Response from the server.
- * @throws APIError If any API error exists.
+ * @param args {any} Additional to the request arguments.
+ * @returns {Promise<Response>} Response from the server.
  */
-export default async function (method: string, args?: Array<RequestArgument>): Promise<any> {
+export default async function (method: string, args?: any): Promise<Response> {
   try {
     // Default (or start) request URI.
-    // TODO: remove "?a=b" from URI.
-    const uri = `https://some-random-api.ml/${method}?a=b`;
+    const uri = `https://some-random-api.ml/${method}?${new URLSearchParams(args)}`;
 
-    // This is a generator for our arguments array.
-    args?.forEach((arg: RequestArgument) => {
-      if (arg.name && arg.value) uri.concat(`&${encodeURIComponent(arg.name)}=${encodeURIComponent(arg.value)}`);
-    });
-
-    // Returning only "data" field (if exist).
-    return (await axios.get(encodeURI(uri))).data;
+    // Fetch & convert the response to the JSON.
+    return (await fetch(uri)).json();
   } catch (error) {
-    // Here we can catch 2 types of errors:
-    // 1. Response error (if something went wrong with response).
-    // 2. Request error (if something went wrong with our request).
-
-    // So, this is handler for the response error.
-    if (error.response) {
-      throw new APIError(error.response.status, error.response.statusText);
-    }
-
-    // And for the request error.
-    if (error.request) {
-      throw new APIError(error.request.status, error.request.statusText);
-    }
+    throw new Error(`During the execution of the request, an error occurred: ${error}.`);
   }
-}
-
-/**
- * `RequestArgument` — interface for our request arguments.
- * @example {name: 'smth', value: 'good!'}
- */
-export interface RequestArgument {
-  name: string,
-  value?: string | number | boolean;
 }
