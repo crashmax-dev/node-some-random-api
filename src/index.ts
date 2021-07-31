@@ -495,7 +495,7 @@ export class SRAClient {
    * @param avatar {string} Avatar to work with.
    * @returns {object} Returned data from API.
    */
-  public async lolice(avatar: string) {
+  public async lolice(avatar: string): Promise<AxiosResponse> {
     return await RequestHandler("canvas/lolice", [{name: 'avatar', value: avatar}, {name: 'key', value: this._t}]);
   }
 

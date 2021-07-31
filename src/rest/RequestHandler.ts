@@ -20,7 +20,7 @@ export default async function (method: string, args?: Array<RequestArgument>): P
     });
 
     // Returning only "data" field (if exist).
-    return (await axios.get(encodeURI(uri))).data
+    return (await axios.get(encodeURI(uri))).data;
   } catch (error) {
     // Here we can catch 2 types of errors:
     // 1. Response error (if something went wrong with response).
