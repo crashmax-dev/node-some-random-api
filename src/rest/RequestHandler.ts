@@ -16,7 +16,7 @@ export default async function (method: string, args?: Array<RequestArgument>): P
 
     // This is a generator for our arguments array.
     args?.forEach((arg: RequestArgument) => {
-      if (arg.name && arg.value) uri.concat(`&${arg.name}=${arg.value}`);
+      if (arg.name && arg.value) uri.concat(`&${encodeURIComponent(arg.name)}=${encodeURIComponent(arg.value)}`);
     });
 
     // Returning only "data" field (if exist).
