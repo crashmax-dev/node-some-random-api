@@ -1,6 +1,6 @@
 {
   "name": "node-some-random-api",
-  "version": "1.0.0-dev.7c7b649.1627683023",
+  "version": "1.0.0-dev",
   "description": "Node.js wrapper for Some Random API.",
   "main": "./lib/index.js",
   "repository": {
@@ -32,6 +32,7 @@
   ],
   "typings": "./lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
