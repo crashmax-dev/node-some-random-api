@@ -1,6 +1,6 @@
 import RequestHandler from "./rest/RequestHandler";
 
-export default class SRAClient {
+export class SRAClient {
   /**
    * Client's token to create requests.
    * @type {string | undefined}
