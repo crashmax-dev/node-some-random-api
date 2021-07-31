@@ -3,10 +3,7 @@
     "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
-    "lib": [
-      "es2020",
-      "DOM"
-    ],
+    "lib": ["es2020", "DOM"],
     "rootDir": "./src/",
     "outDir": "./lib/",
     "strict": true,
@@ -27,8 +24,5 @@
     "declaration": true,
     "pretty": true
   },
-  "include": [
-    "./typings/**/*",
-    "./src/**/*"
-  ]
+  "include": ["./typings/**/*", "./src/**/*"]
 }

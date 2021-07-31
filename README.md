@@ -11,11 +11,14 @@
 ---
 
 ##### Requirements:
-* node: **12.0.0** or newer,
-* npm: **6.9.0** or newer.
+
+- node: **12.0.0** or newer,
+- npm: **6.9.0** or newer.
 
 ##### Download library:
+
 Via npm:
+
 ```bash
 npm install node-some-random-api
 ```
@@ -31,7 +34,7 @@ yarn add node-some-random-api
 ---
 
 ```js
-const someRandomAPI = require('node-some-random-api');
+const someRandomAPI = require("node-some-random-api");
 const client = new someRandomAPI.SRAClient("put-here-your-token");
 
 client.dog().then((response) => console.log(response));
