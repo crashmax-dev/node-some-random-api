@@ -2,19 +2,19 @@
 <p align="center">Promise-based Node.js wrapper for <a href="https://some-random-api.ml">Some Random API</a>.</p>
 <p align="center">
   <a href="https://github.com/Pelfox/node-some-random-api/actions"><img src="https://img.shields.io/github/workflow/status/Pelfox/node-some-random-api/Build%20&%20Publish%20library" alt="NSRA library build state." /></a>
-  <a href="https://https://www.npmjs.com/package/node-some-random-api"><img src="https://img.shields.io/npm/v/node-some-random-api" alt="NSRA npm status."/></a>
-  <a href="https://https://www.npmjs.com/package/node-some-random-api"><img src="https://img.shields.io/npm/dw/node-some-random-api" alt="NSRA downloads counter" /></a>
+  <a href="https://www.npmjs.com/package/node-some-random-api"><img src="https://img.shields.io/npm/v/node-some-random-api" alt="NSRA npm status."/></a>
+  <a href="https://www.npmjs.com/package/node-some-random-api"><img src="https://img.shields.io/npm/dw/node-some-random-api" alt="NSRA downloads counter" /></a>
 </p>
 
 ### About
 
 ---
 
-The NSRA library was created in order to simplify and speed up working with the [Some Random API](https://some-random-api.ml) in the TypeScript and JavaScript environment. Here are some of the main benefits:
+The NSRA library created in order to simplify and speed up working with the [Some Random API](https://some-random-api.ml) in the TypeScript and JavaScript environment. Here are some of the main benefits:
 
-- The library is completely built on the principle of Promises.
-- Almost complete coverage of Endpoints by the library.
-- Continuous improvement and completion of the library.
+- The library built on the principle of Promises.
+- Almost complete coverage of SRA endpoints by the library.
+- Continuous improvement and completion.
 
 ### Installation
 
@@ -33,7 +33,7 @@ Installation using npm package manager:
 npm install node-some-random-api
 ```
 
-Or, if you are using Yarn, enter this command::
+Or, if you are using Yarn, enter this command:
 
 ```bash
 yarn add node-some-random-api
