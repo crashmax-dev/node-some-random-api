@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { AnimalResponse } from "./interfaces";
+import {AnimalResponse} from "./interfaces";
 
 export class SRAClient {
   /**
@@ -29,11 +29,12 @@ export class SRAClient {
     const params = new URLSearchParams(
       this.api_token ? Object.assign(args, { key: this.api_token }) : args
     ).toString();
-    const response = await fetch(
-      `https://some-random-api.ml/${method}?${params}`
-    );
-    const data = await response.json();
-    return data;
+    const request = await fetch(`https://some-random-api.ml/${method}?${params}`);
+    const response = await request.json();
+    if ('error' in response || response.status !== 200) {
+      throw new Error(`During the request, something went wrong: ${response.error}.`);
+    }
+    return response;
   }
 
   /**
@@ -200,7 +201,7 @@ export class SRAClient {
   }
 
   /**
-   * A meme api which generates a fake
+   * An api which generates a fake
    * "real looking" Discord Bot Token.
    * @param id {number | undefined} ID of the application.
    * @returns {any} Returned data from API.
@@ -545,5 +546,108 @@ export class SRAClient {
    */
   public async petpet(avatar: string) {
     return await this.api<any>("premium/petpet", { avatar });
+  }
+
+  /**
+   * Fully customizable welcome images.
+   * @param background {string} Name of the image, that will append into background.
+   * @param type {string} Is user joined or left?
+   * @param template {number} Number of the template to use.
+   * @param avatar {string} Avatar to work with.
+   * @param username {string} Username of the user, that joined/left.
+   * @param discriminator {number} Discriminator of the user, that joined/left.
+   * @param guildName {string} Name of the guild, that user joined/left.
+   * @param textcolor {string} Color of the text, that will be used at final image.
+   * @param memberCount {number} Count of the members in guild.
+   * @returns {any} Returned data from API.
+   */
+  public async greetingImage(
+    background:
+      | "stars"
+      | "stars2"
+      | "rainbowgradient"
+      | "rainbow"
+      | "sunset"
+      | "night"
+      | "blobday"
+      | "blobnight"
+      | "space"
+      | "gaming1"
+      | "gaming2"
+      | "gaming3"
+      | "gaming4",
+    type: "join" | "leave",
+    template: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+    avatar: string,
+    username: string,
+    discriminator: number,
+    guildName: string,
+    textcolor:
+      | "red"
+      | "orange"
+      | "yellow"
+      | "green"
+      | "blue"
+      | "indigo"
+      | "purple"
+      | "pink"
+      | "black"
+      | "white",
+    memberCount: number
+  ) {
+    return await this.api<any>(`welcome/img/${template}/${background}`, {
+      type,
+      avatar,
+      username,
+      discriminator,
+      guildName,
+      textcolor,
+      memberCount,
+    });
+  }
+
+  /**
+   * Fully customizable rank cards.
+   * @param avatar {string} Avatar to work with.
+   * @param username {string} Username of the user.
+   * @param discriminator {number} Discriminator of the user.
+   * @param level {number} Current user's level.
+   * @param cxp {number} Current XP.
+   * @param nxp {number} Needed XP.
+   * @param template {number} Template for the rank card.
+   * @param bg {string} Background of the card. Required a tier 2 key.
+   * @param cbg {string} HEX string of the background (without "#").
+   * @param ctext {string} Text color (HEX string without "#").
+   * @param ccxp {string} Current XP color (HEX string without "#").
+   * @param cbar {string} XP bar color (HEX string without "#").
+   * @returns {any} Returned data from API.
+   */
+  public async rankCard(
+    avatar: string,
+    username: string,
+    discriminator: number,
+    level: number,
+    cxp: number,
+    nxp: number,
+    template: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8,
+    bg?: string,
+    cbg?: string,
+    ctext?: string,
+    ccxp?: string,
+    cbar?: string
+  ) {
+    return await this.api<any>(`rankcard/${template}`, {
+      avatar,
+      discriminator,
+      level,
+      username,
+      cxp,
+      nxp,
+      bg,
+      cbg,
+      ctext,
+      ccxp,
+      cbar,
+    });
   }
 }
