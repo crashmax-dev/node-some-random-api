@@ -34,7 +34,8 @@ it("Get welcome image!", async () => {
       type: "join",
     })
     .then((buffer) => {
-      writeFilePromise(__dirname + "/banner.png", Buffer.from(buffer));
+      expect(buffer.byteLength).not.toBeLessThan(0);
+      expect(new Blob([buffer])).not.toBeUndefined();
     });
 });
 
@@ -44,6 +45,7 @@ it("triggered!", async () => {
       "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
     )
     .then((buffer) => {
-      writeFilePromise(__dirname + "/triggered.gif", Buffer.from(buffer));
+      expect(buffer.byteLength).not.toBeLessThan(0);
+      expect(new Blob([buffer])).not.toBeUndefined();
     });
 });
