@@ -45,11 +45,9 @@ yarn add node-some-random-api
 
 ```js
 const { SRAClient } = require("node-some-random-api");
-const client = new SRAClient("put-here-your-token");
+const client = new SRAClient("your-token");
 
-client
-  .dog()
-  .then(response => console.log(response));
+client.dog().then((response) => console.log(response));
 ```
 
 ### Examples

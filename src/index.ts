@@ -46,15 +46,18 @@ export class SRAClient {
   private async api<T>(method: string, args?: Record<string, any>): Promise<T> {
     const token = { key: this.api_token };
     const params = new URLSearchParams(
-      this.api_token ? args ? Object.assign(args, token) : token : args
+      this.api_token ? (args ? Object.assign(args, token) : token) : args
     ).toString();
-    const request = await fetch(`https://some-random-api.ml/${method}?${params}`);
-    const response = await request.arrayBuffer();
-    const data = this.parseArrayBuffer(response);
-    if (data.error) {
-      throw new Error(`During the request, something went wrong: ${data.error}.`);
+    try {
+      const request = await fetch(
+        `https://some-random-api.ml/${method}?${params}`
+      );
+      const response = await request.arrayBuffer();
+      const data = this.parseArrayBuffer(response);
+      return data;
+    } catch (error) {
+      throw new Error(`During the request, something went wrong: ${error}.`);
     }
-    return data;
   }
 
   private parseArrayBuffer(data: ArrayBuffer) {
@@ -352,8 +355,14 @@ export class SRAClient {
    * @param threshold {number | undefined} Threshold to use.
    * @returns {Promise<ArrayBuffer>} Returned data from API.
    */
-  public async threshold(avatar: string, threshold?: number): Promise<ArrayBuffer> {
-    return await this.api<ArrayBuffer>("canvas/threshold", { avatar, threshold });
+  public async threshold(
+    avatar: string,
+    threshold?: number
+  ): Promise<ArrayBuffer> {
+    return await this.api<ArrayBuffer>("canvas/threshold", {
+      avatar,
+      threshold,
+    });
   }
 
   /**
@@ -371,8 +380,14 @@ export class SRAClient {
    * @param end {string} Last string.
    * @returns {SimilarityResponse} Returned data from API.
    */
-  public async stringSimilarity(string1: string, string2: string): Promise<SimilarityResponse> {
-    return await this.api<SimilarityResponse>("stringsimilarity", { string1, string2 });
+  public async stringSimilarity(
+    string1: string,
+    string2: string
+  ): Promise<SimilarityResponse> {
+    return await this.api<SimilarityResponse>("stringsimilarity", {
+      string1,
+      string2,
+    });
   }
 
   /**
@@ -595,15 +610,18 @@ export class SRAClient {
     textcolor,
     memberCount,
   }: GreetingImage): Promise<ArrayBuffer> {
-    return await this.api<ArrayBuffer>(`welcome/img/${template}/${background}`, {
-      type,
-      avatar,
-      username,
-      discriminator,
-      guildName,
-      textcolor,
-      memberCount,
-    });
+    return await this.api<ArrayBuffer>(
+      `welcome/img/${template}/${background}`,
+      {
+        type,
+        avatar,
+        username,
+        discriminator,
+        guildName,
+        textcolor,
+        memberCount,
+      }
+    );
   }
 
   /**

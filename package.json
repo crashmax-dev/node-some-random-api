@@ -1,6 +1,6 @@
 {
   "name": "node-some-random-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Promise-based Node.js wrapper for Some Random API.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -14,6 +14,7 @@
   "license": "GPL-3.0",
   "private": false,
   "dependencies": {
+    "@types/node-fetch": "^2.5.12",
     "node-fetch": "^2.6.1"
   },
   "keywords": [

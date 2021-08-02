@@ -108,33 +108,33 @@ interface BaseImage {
 
 export interface GreetingImage extends BaseImage {
   background:
-  | "stars"
-  | "stars2"
-  | "rainbowgradient"
-  | "rainbow"
-  | "sunset"
-  | "night"
-  | "blobday"
-  | "blobnight"
-  | "space"
-  | "gaming1"
-  | "gaming2"
-  | "gaming3"
-  | "gaming4";
+    | "stars"
+    | "stars2"
+    | "rainbowgradient"
+    | "rainbow"
+    | "sunset"
+    | "night"
+    | "blobday"
+    | "blobnight"
+    | "space"
+    | "gaming1"
+    | "gaming2"
+    | "gaming3"
+    | "gaming4";
   type: "join" | "leave";
   template: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   guildName: string;
   textcolor:
-  | "red"
-  | "orange"
-  | "yellow"
-  | "green"
-  | "blue"
-  | "indigo"
-  | "purple"
-  | "pink"
-  | "black"
-  | "white";
+    | "red"
+    | "orange"
+    | "yellow"
+    | "green"
+    | "blue"
+    | "indigo"
+    | "purple"
+    | "pink"
+    | "black"
+    | "white";
   memberCount: number;
 }
 
@@ -155,4 +155,4 @@ export interface TweetImage extends Omit<BaseImage, "discriminator"> {
   comment: string;
 }
 
-export type YoutubeCommentImage = Omit<TweetImage, "displayname">
+export type YoutubeCommentImage = Omit<TweetImage, "displayname">;
