@@ -29,12 +29,12 @@ export class SRAClient {
     const params = new URLSearchParams(
       this.api_token ? Object.assign(args, { key: this.api_token }) : args
     ).toString();
-    const request = await fetch(`https://some-random-api.ml/${method}?${params}`);
-    const response = await request.json();
-    if ('error' in response || response.status !== 200) {
-      throw new Error(`During the request, something went wrong: ${response.error}.`);
+    try {
+      const request = await fetch(`https://some-random-api.ml/${method}?${params}`);
+      return await request.json();
+    } catch (error) {
+      throw new Error(`During the request something went wrong: ${error}.`);
     }
-    return response;
   }
 
   /**
