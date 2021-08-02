@@ -27,7 +27,7 @@ The NSRA library created in order to simplify and speed up working with the [Som
 
 ##### Download library:
 
-Installation using npm package manager:
+Installation using npm:
 
 ```bash
 npm install node-some-random-api
