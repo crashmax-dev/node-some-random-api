@@ -18,34 +18,3 @@ it("Get fluffy fox image and fact!", async () => {
     expect(image).not.toBeUndefined();
   });
 });
-
-it("Get welcome image!", async () => {
-  api
-    .greetingImage({
-      template: 4,
-      avatar:
-        "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-      background: "rainbow",
-      discriminator: 6460,
-      username: "crashmax",
-      guildName: "???",
-      memberCount: 10,
-      textcolor: "black",
-      type: "join",
-    })
-    .then((buffer) => {
-      expect(buffer.byteLength).not.toBeLessThan(0);
-      expect(new Blob([buffer])).not.toBeUndefined();
-    });
-});
-
-it("triggered!", async () => {
-  api
-    .triggered(
-      "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-    )
-    .then((buffer) => {
-      expect(buffer.byteLength).not.toBeLessThan(0);
-      expect(new Blob([buffer])).not.toBeUndefined();
-    });
-});
